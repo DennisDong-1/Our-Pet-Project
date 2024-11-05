@@ -2,10 +2,13 @@ from django.shortcuts import render
 from rest_framework import viewsets, generics
 from .serialization import *
 from .models import *
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 
 #For Pets
+
+User = get_user_model()
 class PetListView(generics.ListAPIView):
     model = Pet
     queryset = Pet.objects.all()
@@ -13,6 +16,10 @@ class PetListView(generics.ListAPIView):
 
     def get_queryset(self):
         return Pet.objects.all()
+
+class PetCreateView(generics.CreateAPIView):
+    queryset = Pet.objects.all()
+    serializer_class = PetSerializer
 
 class PetRetrieveView(generics.RetrieveAPIView):
     queryset = Pet.objects.all()
