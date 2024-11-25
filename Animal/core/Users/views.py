@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 
 # Create your views here.
 
-User = get_user_model()
+user = get_user_model()
 
 # For Login/Logout
 
@@ -46,7 +46,7 @@ class LogoutView(APIView):
             return Response({"error": str(e)})
         
 class RegisterView(generics.ListCreateAPIView):
-    queryset = User.objects.all()
+    queryset = user.objects.all()
     serializer_class = RegisterSerializer
 
     

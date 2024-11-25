@@ -15,21 +15,28 @@ class CustomUsers(AbstractUser):
     role = models.CharField(max_length=255, default=1)
     is_verified = models.BooleanField(default=False)
 
+    
     groups = models.ManyToManyField(
         Group,
-        related_name='customusers_set',  # Change the related name
+        related_name='charging_user_set',
         blank=True,
-        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.'
+        help_text=('The groups this user belongs to. A user will get all permissions '
+                    'granted to each of their groups.'),
+        verbose_name=('groups'),
     )
-
     user_permissions = models.ManyToManyField(
         Permission,
-        related_name='customusers_set',  # Change the related name
+        related_name='charging_user_set',
         blank=True,
-        help_text='Specific permissions for this user.'
+        help_text=('Specific permissions for this user.'),
+        verbose_name=('user permissions'),
     )
+        
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
     def __str__(self):
-        return self.username
+        return self.email
 
 
 

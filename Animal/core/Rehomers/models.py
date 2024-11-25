@@ -13,7 +13,7 @@ class RehomerProfile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.email} - Rehomer Profile"
+        return f"{self.user}"
 
 class RehomerApplication(models.Model):
     # Foreign keys to link adopters with pets and applications

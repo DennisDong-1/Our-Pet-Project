@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
 ]
 
@@ -151,6 +152,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-# SIMPLE_JWT = {
-#     'BLACKLIST_AFTER_ROTATION': True,
-# }
+SIMPLE_JWT = {
+    'BLACKLIST_AFTER_ROTATION': True,
+}
